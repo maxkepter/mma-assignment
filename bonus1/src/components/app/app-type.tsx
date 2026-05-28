@@ -11,7 +11,6 @@ export default function AppType({ type, apps }: AppTypeProps) {
         style={{
           backgroundColor: "#EFEDF0",
           paddingHorizontal: 16,
-          marginBottom: 10,
           width: "100%",
         }}
       >

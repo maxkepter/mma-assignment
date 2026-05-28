@@ -1,9 +1,10 @@
 import ProfileItemProps from "@/types/profile-item-props";
-import { Image, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function ProfileItem(item: ProfileItemProps) {
   return (
-    <View
+    <TouchableOpacity
       style={{
         flexDirection: "row",
         alignItems: "center",
@@ -16,12 +17,9 @@ export default function ProfileItem(item: ProfileItemProps) {
           source={item.image}
           style={{ width: 24, height: 24, marginRight: 10 }}
         />
-        <Text style={{ fontSize: 16 }}>{item.name}</Text>
+        <Text style={{ fontSize: 16, fontWeight: "500" }}>{item.name}</Text>
       </View>
-      <Image
-        source={require("@/assets/images/react-logo.png")}
-        style={{ width: 16, height: 16 }}
-      />
-    </View>
+      <Ionicons name="chevron-forward" size={18} color="#999" />
+    </TouchableOpacity>
   );
 }

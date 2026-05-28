@@ -6,59 +6,86 @@ import Header from "@/components/header";
 export default function Profile() {
   const profileItems: ProfileItemProps[] = [
     {
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/profile/myprofile.svg"),
       name: "My Profile",
     },
     {
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/profile/setting.svg"),
       name: "Settings",
     },
     {
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/profile/support.svg"),
       name: "Support",
     },
     {
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/profile/faq.svg"),
       name: "FAQ",
     },
     {
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/profile/admin.svg"),
       name: "Admin",
     },
     {
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/profile/logout.svg"),
       name: "Logout",
     },
   ];
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <ScrollView style={{ flex: 1, backgroundColor: "#fff", paddingTop: 16 }}>
       <View>
-        <Header type={1} style={{ margin: 16 }}>
-          Profile
-        </Header>
         <View
           style={{
-            backgroundColor: "#1E90FF",
-            height: 150,
+            height: 140,
             justifyContent: "center",
             alignItems: "center",
+            paddingHorizontal: 8,
           }}
         >
           <Image
-            source={require("@/assets/images/react-logo.png")}
+            source={require("@/assets/profile/building.png")}
             style={{
-              width: 100,
-              height: 100,
-              borderRadius: 50,
-              position: "absolute",
-              bottom: -50,
-              borderWidth: 4,
-              borderColor: "#fff",
+              width: "100%",
+              height: 140,
+              backgroundColor: "#4A90E2",
+              borderRadius: 6,
+              overflow: "hidden",
             }}
           />
         </View>
-        <View style={{ marginTop: 60, alignItems: "center" }}>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+
+        <View
+          style={{
+            width: 120,
+            height: 120,
+            borderRadius: 60,
+            backgroundColor: "#DCF1FF",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: -60,
+            borderWidth: 3,
+            borderColor: "#fff",
+            alignSelf: "center",
+          }}
+        >
+          <Text style={{ fontSize: 78, fontWeight: "600", color: "#0A96F3" }}>
+            K
+          </Text>
+          <Image
+            source={require("../../../assets/profile/uploadImage.svg")}
+            style={{
+              position: "absolute",
+              bottom: -10,
+              right: 10,
+              width: 32,
+              height: 32,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          />
+        </View>
+
+        <View style={{ marginTop: 20, alignItems: "center" }}>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>
             Phạm Quang Khang (KHANGPQ3)
           </Text>
           <Text style={{ fontSize: 16, color: "#888" }}>(BM SE)</Text>
