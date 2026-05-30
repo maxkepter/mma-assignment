@@ -2,9 +2,9 @@ import { Text, View } from "react-native";
 import App from "./app";
 import { AppCategory } from "@/src/types/app-category";
 
-type AppTypeProps = AppCategory;
+type AppTypeProps = AppCategory & { grid?: boolean };
 
-export default function AppType({ type, apps }: AppTypeProps) {
+export default function AppType({ type, apps, grid }: AppTypeProps) {
   return (
     <View style={{ marginHorizontal: -16 }}>
       <View
@@ -27,13 +27,14 @@ export default function AppType({ type, apps }: AppTypeProps) {
         </Text>
       </View>
 
-      <View style={{ paddingHorizontal: 16 }}>
+      <View style={{ paddingHorizontal: 16, flexDirection: grid ? "row" : "column", flexWrap: grid ? "wrap" : "nowrap" }}>
         {apps.map((app, index) => (
           <App
             key={index}
             image={app.image}
             title={app.title}
             description={app.description}
+            grid={grid}
           />
         ))}
       </View>

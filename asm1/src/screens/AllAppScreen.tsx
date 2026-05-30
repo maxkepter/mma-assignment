@@ -1,10 +1,13 @@
+import React, { useState } from "react";
 import Header from "../components/header";
 import AppType from "../components/app/app-type";
 import { Image } from "expo-image";
-import { ScrollView, TextInput, View } from "react-native";
+import { ScrollView, TextInput, View, TouchableOpacity } from "react-native";
 import { AppCategory } from "../types/app-category";
 
 export default function AllAppScreen() {
+  const [isGridLayout, setIsGridLayout] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const appCategories: AppCategory[] = [
     {
       type: "WORK",
@@ -117,6 +120,15 @@ export default function AllAppScreen() {
     },
   ];
 
+  const filteredAppCategories = appCategories
+    .map((category) => ({
+      ...category,
+      apps: category.apps.filter((app) =>
+        app.title.toLowerCase().includes(searchText.toLowerCase())
+      ),
+    }))
+    .filter((category) => category.apps.length > 0);
+
   return (
     <>
       <View
@@ -148,21 +160,25 @@ export default function AllAppScreen() {
             }}
             placeholder="Type feature's name"
             placeholderTextColor="#888"
+            value={searchText}
+            onChangeText={setSearchText}
           />
         </View>
-        <Image
-          style={{ width: 25, height: 25 }}
-          source={require("../../assets/menu.svg")}
-        />
+        <TouchableOpacity onPress={() => setIsGridLayout(!isGridLayout)}>
+          <Image
+            style={{ width: 25, height: 25 }}
+            source={require("../../assets/menu.svg")}
+          />
+        </TouchableOpacity>
       </View>
       <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
         <View style={{ padding: 16 }}>
           <Header type={1}>All Apps</Header>
 
           <View style={{ marginTop: 16 }}>
-            {appCategories.map((category) => (
+            {filteredAppCategories.map((category) => (
               <View key={category.type}>
-                <AppType type={category.type} apps={category.apps} />
+                <AppType type={category.type} apps={category.apps} grid={isGridLayout} />
               </View>
             ))}
           </View>
