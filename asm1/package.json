@@ -22,8 +22,6 @@
   "private": true,
   "devDependencies": {
     "@types/react": "~19.1.10",
-    "babel-plugin-module-resolver": "^5.0.3",
-    "babel-preset-expo": "^56.0.13",
     "typescript": "~5.9.2"
   }
 }
