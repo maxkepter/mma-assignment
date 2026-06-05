@@ -1,5 +1,6 @@
 {
-  "license": "0BSD",
+  "name": "asm1",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "expo start",
@@ -8,20 +9,10 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/vector-icons": "^15.0.3",
     "expo": "~54.0.34",
-    "expo-image": "~3.0.11",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-native": "0.81.5",
-    "react-native-paper": "4.9.2",
-    "react-native-safe-area-context": "~5.6.0",
-    "react-native-web": "^0.21.0"
+    "react-native": "0.81.5"
   },
-  "private": true,
-  "devDependencies": {
-    "@types/react": "~19.1.10",
-    "typescript": "~5.9.2"
-  }
+  "private": true
 }
