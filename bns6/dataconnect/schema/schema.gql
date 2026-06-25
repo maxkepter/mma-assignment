@@ -1,0 +1,39 @@
+type User @table {
+  name: String!
+  email: String!
+  role: String!
+  bio: String
+  phoneNumber: String
+  rating: Float
+}
+
+type JobPosting @table {
+  title: String!
+  description: String!
+  hourlyRate: Float!
+  startTime: Timestamp!
+  endTime: Timestamp!
+  status: String!
+  manager: User!
+}
+
+type Application @table {
+  status: String!
+  worker: User!
+  jobPosting: JobPosting!
+}
+
+type Shift @table {
+  actualStartTime: Timestamp!
+  actualEndTime: Timestamp!
+  totalPay: Float!
+  jobPosting: JobPosting!
+  worker: User!
+}
+
+type Review @table {
+  rating: Int!
+  comment: String!
+  shift: Shift!
+  author: User!
+}

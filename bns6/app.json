@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "bns6",
+    "slug": "bns6",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.bns6"
+    },
+    "android": {
+      "package": "com.kepter.bn6",
+      "googleServicesFile": "./google-services.json",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "useNextNotificationsApi": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#ffffff",
+          "defaultChannel": "default",
+          "enableBackgroundRemoteNotifications": false
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f4e57597-49a7-44c2-a60f-a6813c809711"
+      }
+    }
+  }
+}

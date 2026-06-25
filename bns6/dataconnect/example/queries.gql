@@ -1,0 +1,43 @@
+mutation CreateJobPosting($title: String!, $description: String!, $hourlyRate: Float!, $startTime: Timestamp!, $endTime: Timestamp!, $status: String!) @auth(level: USER) {
+  jobPosting_insert(data: {
+    title: $title,
+    description: $description,
+    hourlyRate: $hourlyRate,
+    startTime: $startTime,
+    endTime: $endTime,
+    status: $status,
+    managerId_expr: "auth.uid"
+  })
+}
+
+mutation CreateApplication($jobPostingId: UUID!) @auth(level: USER) {
+  application_insert(data: {
+    status: "pending",
+    jobPostingId: $jobPostingId,
+    workerId_expr: "auth.uid"
+  })
+}
+
+query ListJobPostings @auth(level: PUBLIC) {
+  jobPostings(orderBy: [{startTime: ASC}]) {
+    id
+    title
+    hourlyRate
+    manager {
+      name
+      rating
+    }
+  }
+}
+
+query MyShifts @auth(level: USER) {
+  shifts(where: {workerId: {eq_expr: "auth.uid"}}) {
+    id
+    actualStartTime
+    actualEndTime
+    totalPay
+    jobPosting {
+      title
+    }
+  }
+}

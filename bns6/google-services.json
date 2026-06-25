@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674940181993",
+    "project_id": "bns6-b71f7",
+    "storage_bucket": "bns6-b71f7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674940181993:android:cb68219055a5ae2d04bf78",
+        "android_client_info": {
+          "package_name": "com.kepter.bn6"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl_Msx_EuJU5zZSkWTnqSiHSAGahhtJQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

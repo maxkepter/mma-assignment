@@ -1,0 +1,27 @@
+mutation CreateDemoData @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      name: "demouser1",
+      email: "demo1@example.com",
+      role: "worker"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      name: "demouser2",
+      email: "demo2@example.com",
+      role: "manager"
+    }
+  ])
+  jobPosting_insertMany(data: [
+    {
+      title: "Warehouse Staff",
+      description: "Moving boxes",
+      hourlyRate: 20.0,
+      startTime: "2024-01-01T08:00:00Z",
+      endTime: "2024-01-01T16:00:00Z",
+      status: "OPEN",
+      manager: {id: "550e8400-e29b-41d4-a716-446655440001"}
+    }
+  ])
+}
