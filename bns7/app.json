@@ -1,0 +1,65 @@
+{
+  "expo": {
+    "name": "Photo Memoir",
+    "slug": "bns7",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Ứng dụng cần camera để chụp ảnh.",
+        "NSPhotoLibraryUsageDescription": "Ứng dụng cần thư viện ảnh để chọn ảnh.",
+        "NSLocationWhenInUseUsageDescription": "Ứng dụng cần vị trí để ghi lại nơi chụp ảnh."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.kepter.bns7"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Cho phép ứng dụng sử dụng vị trí của bạn.",
+          "locationWhenInUsePermission": "Cho phép ứng dụng sử dụng vị trí của bạn."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Cho phép ứng dụng truy cập thư viện ảnh."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c00d5c64-5fe7-4d81-9657-c413459874ea"
+      }
+    }
+  }
+}
