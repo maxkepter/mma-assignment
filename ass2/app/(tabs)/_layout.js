@@ -1,4 +1,5 @@
 import { Tabs } from 'expo-router';
+import { Text } from 'react-native';
 import { useCart } from '../../src/context/CartContext';
 
 export default function TabLayout() {

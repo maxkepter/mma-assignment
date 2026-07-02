@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
-import { useFavorites } from '../../src/hooks/useFavorites';
+import { useFavorites } from '../../src/context/FavoritesContext';
 import { useCart } from '../../src/context/CartContext';
 import ProductCard from '../../src/components/ProductCard';
 import { useRouter } from 'expo-router';

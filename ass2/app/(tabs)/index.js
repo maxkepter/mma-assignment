@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, TextInput, ActivityIndicator, StyleSheet, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useProducts } from '../../src/hooks/useProducts';
-import { useFavorites } from '../../src/hooks/useFavorites';
+import { useFavorites } from '../../src/context/FavoritesContext';
 import ProductCard from '../../src/components/ProductCard';
 
 export default function ProductListScreen() {
