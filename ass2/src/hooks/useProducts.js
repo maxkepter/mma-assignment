@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchProducts } from '../api';
 
 export const useProducts = () => {
@@ -14,8 +15,19 @@ export const useProducts = () => {
     setError(null);
 
     try {
+      // Try to load from cache first if not refreshing
+      if (!isRefresh) {
+        const cachedData = await AsyncStorage.getItem('cached_products');
+        if (cachedData) {
+          setAllProducts(JSON.parse(cachedData));
+          setLoading(false); // Show cached data immediately
+        }
+      }
+
       const data = await fetchProducts();
       setAllProducts(data);
+      // Save to cache
+      await AsyncStorage.setItem('cached_products', JSON.stringify(data));
     } catch (err) {
       setError(err.message);
     } finally {

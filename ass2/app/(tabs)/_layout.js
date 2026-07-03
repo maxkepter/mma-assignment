@@ -1,9 +1,11 @@
 import { Tabs } from 'expo-router';
 import { Text } from 'react-native';
 import { useCart } from '../../src/context/CartContext';
+import { useFavorites } from '../../src/context/FavoritesContext';
 
 export default function TabLayout() {
   const { itemCount } = useCart();
+  const { favoriteCount } = useFavorites();
 
   return (
     <Tabs
@@ -32,8 +34,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="favorites"
         options={{
-          title: 'Favorites',
+          title: 'Wishlist',
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, color }}>❤️</Text>,
+          tabBarBadge: favoriteCount > 0 ? favoriteCount : undefined,
         }}
       />
     </Tabs>

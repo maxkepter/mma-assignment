@@ -3,12 +3,15 @@ import { View, Text, Image, ActivityIndicator, StyleSheet, TouchableOpacity, Scr
 import { useLocalSearchParams } from 'expo-router';
 import { fetchProduct } from '../../src/api';
 import { useCart } from '../../src/context/CartContext';
+import { getProductReviewSummary } from '../../src/services/gemini';
 
 export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [added, setAdded] = useState(false);
+  const [aiSummary, setAiSummary] = useState('');
+  const [loadingAi, setLoadingAi] = useState(false);
   const { addToCart } = useCart();
 
   useEffect(() => {
@@ -16,6 +19,14 @@ export default function ProductDetailScreen() {
       const data = await fetchProduct(id);
       setProduct(data);
       setLoading(false);
+
+      // Fetch AI summary
+      if (data) {
+        setLoadingAi(true);
+        const summary = await getProductReviewSummary(data.title, data.description);
+        setAiSummary(summary);
+        setLoadingAi(false);
+      }
     };
     load();
   }, [id]);
@@ -31,6 +42,17 @@ export default function ProductDetailScreen() {
         <Text style={styles.title}>{product.title}</Text>
         <Text style={styles.price}>${product.price.toFixed(2)}</Text>
         <Text style={styles.category}>{product.category}</Text>
+        
+        {/* AI Insights Section */}
+        <View style={styles.aiContainer}>
+          <Text style={styles.aiTitle}>✨ AI Shopping Assistant Insights</Text>
+          {loadingAi ? (
+            <ActivityIndicator size="small" color="#e91e63" style={{ marginVertical: 8 }} />
+          ) : (
+            <Text style={styles.aiText}>{aiSummary}</Text>
+          )}
+        </View>
+
         <Text style={styles.description}>{product.description}</Text>
         <TouchableOpacity
           style={[styles.addBtn, added && styles.addedBtn]}
@@ -52,6 +74,25 @@ const styles = StyleSheet.create({
   title: { fontSize: 22, fontWeight: '700', marginBottom: 8, color: '#222' },
   price: { fontSize: 26, fontWeight: '700', color: '#e91e63', marginBottom: 8 },
   category: { fontSize: 14, color: '#888', textTransform: 'capitalize', marginBottom: 12 },
+  aiContainer: {
+    backgroundColor: '#fce4ec',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#f8bbd0',
+  },
+  aiTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#c2185b',
+    marginBottom: 4,
+  },
+  aiText: {
+    fontSize: 14,
+    color: '#880e4f',
+    lineHeight: 20,
+  },
   description: { fontSize: 15, lineHeight: 22, color: '#555', marginBottom: 24 },
   addBtn: {
     backgroundColor: '#e91e63',
